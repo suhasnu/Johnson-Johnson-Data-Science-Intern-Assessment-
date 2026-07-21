@@ -42,7 +42,7 @@ CAR_COST_PER_KM_EUR = 0.30  # all-in running cost, German rule of thumb
 ADOPTION_WEIGHTS = {
     "intercept": 2.6,
     "commute_min": -0.045,     # longer commute lowers adoption
-    "n_transfers": -0.30,      # each transfer lowers adoption
+    "n_transfers": -0.45,      # each transfer lowers adoption
     "access_walk_min": -0.04,  # longer walk to the first stop lowers adoption
     "owns_car": -0.80,         # car owners are less likely to switch
     "savings_eur": 0.010,      # money saved vs driving raises adoption
