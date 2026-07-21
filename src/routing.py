@@ -5,6 +5,7 @@ import math
 import os
 import time
 from datetime import datetime, timedelta, timezone
+import warnings
 
 import requests
 
@@ -217,8 +218,11 @@ def get_commute(from_lat, from_lon, to_lat, to_lon, arrival_iso=None, use_api=Tr
             journeys = data.get("journeys", [])
             if journeys:
                 result = _parse_journey(journeys[0])
+            else:
+                warnings.warn(f"No journey found for {key}, using estimate")
             time.sleep(config.API_SLEEP)
-        except Exception:
+        except Exception as exc:
+            warnings.warn(f"API call failed for {key} ({exc}); using estimate")
             result = None
 
     if result is None:
